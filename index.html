@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BookMyPlants | Bring Nature Home</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8faf7;
+      color: #1f2937;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      height: 72px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #166534;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #65a30d;
+    }
+
+    .menu {
+      display: flex;
+      gap: 25px;
+      font-size: 15px;
+    }
+
+    .menu a:hover {
+      color: #166534;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .search {
+      border: 1px solid #d1d5db;
+      padding: 10px 14px;
+      border-radius: 8px;
+      width: 170px;
+    }
+
+    .cart {
+      background: #166534;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 70px 55px;
+      min-height: 470px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(20,60,30,.92), rgba(20,60,30,.45)),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      color: #f1f5f2;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #a3e635;
+      color: #17351e;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .btn-light {
+      background: white;
+      color: #166534;
+    }
+
+    /* COMMON */
+    .section {
+      max-width: 1200px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: 34px;
+      margin-bottom: 10px;
+      color: #14532d;
+    }
+
+    .section-heading p {
+      color: #6b7280;
+    }
+
+    /* CATEGORY */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .category {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      transition: .25s;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+
+    .category img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .category-content {
+      padding: 18px;
+    }
+
+    .category h3 {
+      color: #14532d;
+      margin-bottom: 6px;
+    }
+
+    .category p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product h3 {
+      margin-bottom: 8px;
+      color: #14532d;
+    }
+
+    .rating {
+      color: #ca8a04;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .buy-btn {
+      width: 100%;
+      border: 0;
+      background: #166534;
+      color: white;
+      padding: 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .buy-btn:hover {
+      background: #14532d;
+    }
+
+    /* BENEFITS */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .benefit {
+      text-align: center;
+      background: white;
+      padding: 30px 20px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .benefit-icon {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .benefit h3 {
+      margin-bottom: 10px;
+      color: #14532d;
+    }
+
+    .benefit p {
+      color: #6b7280;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* CTA */
+    .cta {
+      max-width: 1200px;
+      margin: 70px auto;
+      padding: 55px 30px;
+      background: #14532d;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta h2 {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      margin-bottom: 25px;
+      color: #dcfce7;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #102b19;
+      color: white;
+      padding: 45px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h3 {
+      margin-bottom: 15px;
+    }
+
+    footer p,
+    footer a {
+      color: #cbd5cf;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+
+      .menu {
+        display: none;
+      }
+
+      .search {
+        width: 120px;
+      }
+
+      .hero {
+        margin: 15px;
+        padding: 50px 25px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .categories,
+      .products,
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section {
+        margin: 50px auto;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .nav {
+        height: 62px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .search {
+        display: none;
+      }
+
+      .cart {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 500px;
+        margin: 10px;
+        border-radius: 15px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .btn {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      .categories,
+      .products,
+      .benefits,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+
+      <div class="logo">
+        BookMy<span>Plants</span> 🌱
+      </div>
+
+      <nav class="menu">
+        <a href="#">Home</a>
+        <a href="#">Plants</a>
+        <a href="#">Indoor Plants</a>
+        <a href="#">Outdoor Plants</a>
+        <a href="#">Plant Care</a>
+      </nav>
+
+      <div class="nav-actions">
+        <input class="search" type="text" placeholder="Search plants...">
+        <a class="cart" href="#">🛒 Cart</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>Bring Nature Home 🌿</h1>
+
+      <p>
+        Discover beautiful, healthy plants for your home, office and garden.
+        Choose your favorite plants and bring a little more green into your life.
+      </p>
+
+      <a href="#plants" class="btn">Shop Plants</a>
+      <a href="#categories" class="btn btn-light">Explore Plants</a>
+
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories">
+
+    <div class="section-heading">
+      <h2>Find the Perfect Plant</h2>
+      <p>Choose plants that fit your space and lifestyle.</p>
+    </div>
+
+    <div class="categories">
+
+      <div class="category">
+        <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=80">
+        <div class="category-content">
+          <h3>Indoor Plants</h3>
+          <p>Beautiful plants for your home and workspace.</p>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="https://images.unsplash.com/photo-1597055181300-5f8b9a7f5b5a?auto=format&fit=crop&w=700&q=80">
+        <div class="category-content">
+          <h3>Outdoor Plants</h3>
+          <p>Add natural beauty to your balcony and garden.</p>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80">
+        <div class="category-content">
+          <h3>Flowering Plants</h3>
+          <p>Add color and freshness to your surroundings.</p>
+        </div>
+      </div>
+
+      <div class="category">
+        <img src="https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=700&q=80">
+        <div class="category-content">
+          <h3>Easy Care Plants</h3>
+          <p>Perfect plants for beginners and busy people.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+  <section class="section" id="plants">
+
+    <div class="section-heading">
+      <h2>Popular Plants</h2>
+      <p>Some of our favorite plants for your home.</p>
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1593482892290-f54927ae1bb6?auto=format&fit=crop&w=700&q=80">
+        <div class="product-info">
+          <h3>Snake Plant</h3>
+          <div class="rating">★★★★★ 4.8</div>
+          <div class="price">₹499</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1620803366004-119c5b1247c2?auto=format&fit=crop&w=700&q=80">
+        <div class="product-info">
+          <h3>Money Plant</h3>
+          <div class="rating">★★★★★ 4.7</div>
+          <div class="price">₹299</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=700&q=80">
+        <div class="product-info">
+          <h3>Peace Lily</h3>
+          <div class="rating">★★★★★ 4.9</div>
+          <div class="price">₹599</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=80">
+        <div class="product-info">
+          <h3>Aloe Vera</h3>
+          <div class="rating">★★★★★ 4.8</div>
+          <div class="price">₹349</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BENEFITS -->
+  <section class="section">
+
+    <div class="section-heading">
+      <h2>Why BookMyPlants?</h2>
+      <p>Simple, safe and convenient plant shopping.</p>
+    </div>
+
+    <div class="benefits">
+
+      <div class="benefit">
+        <div class="benefit-icon">🌱</div>
+        <h3>Healthy Plants</h3>
+        <p>We carefully select and prepare plants before delivery.</p>
+      </div>
+
+      <div class="benefit">
+        <div class="benefit-icon">📦</div>
+        <h3>Safe Packaging</h3>
+        <p>Plants are packed carefully for a safer delivery experience.</p>
+      </div>
+
+      <div class="benefit">
+        <div class="benefit-icon">🚚</div>
+        <h3>Doorstep Delivery</h3>
+        <p>Get your favorite plants delivered directly to your door.</p>
+      </div>
+
+      <div class="benefit">
+        <div class="benefit-icon">💚</div>
+        <h3>Plant Care Help</h3>
+        <p>Get simple guidance to keep your plants healthy and happy.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+
+    <h2>Ready to Bring Home Some Green?</h2>
+
+    <p>
+      Explore our collection and find the perfect plant for your space.
+    </p>
+
+    <a href="#plants" class="btn">Shop Plants</a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+        <h3>BookMyPlants 🌱</h3>
+        <p>
+          Bringing a little more green into everyday life.
+        </p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <p><a href="#">Home</a></p>
+        <p><a href="#">Plants</a></p>
+        <p><a href="#">Plant Care</a></p>
+        <p><a href="#">About Us</a></p>
+      </div>
+
+      <div>
+        <h3>Support</h3>
+        <p><a href="#">Contact Us</a></p>
+        <p><a href="#">Shipping</a></p>
+        <p><a href="#">FAQs</a></p>
+        <p><a href="#">Privacy Policy</a></p>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
