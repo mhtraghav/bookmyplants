@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plants | BookMyPlants</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7faf7;
+  color:#1f2937;
+}
+
+header{
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  height:72px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+  color:#166534;
+}
+
+.logo span{
+  color:#65a30d;
+}
+
+.menu{
+  display:flex;
+  gap:25px;
+}
+
+.menu a{
+  text-decoration:none;
+  color:#374151;
+  font-size:15px;
+}
+
+.menu a:hover{
+  color:#166534;
+}
+
+.cart{
+  background:#166534;
+  color:white;
+  padding:11px 18px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:50px 20px;
+}
+
+.heading{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.heading h1{
+  font-size:40px;
+  color:#14532d;
+  margin-bottom:10px;
+}
+
+.heading p{
+  color:#6b7280;
+}
+
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:35px;
+}
+
+.filters button{
+  padding:10px 18px;
+  border:1px solid #d1d5db;
+  background:#fff;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.filters button:hover{
+  background:#166534;
+  color:white;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+
+.product{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.product img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+.info{
+  padding:18px;
+}
+
+.info h3{
+  color:#14532d;
+  margin-bottom:8px;
+}
+
+.rating{
+  color:#ca8a04;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.buy{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:7px;
+  background:#166534;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.buy:hover{
+  background:#14532d;
+}
+
+footer{
+  margin-top:60px;
+  background:#102b19;
+  color:white;
+  padding:35px 20px;
+  text-align:center;
+}
+
+footer p{
+  color:#cbd5cf;
+  margin-top:8px;
+}
+
+@media(max-width:900px){
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .menu{
+    display:none;
+  }
+}
+
+@media(max-width:600px){
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .heading h1{
+    font-size:32px;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <a href="index.html" style="text-decoration:none;">
+      <div class="logo">BookMy<span>Plants</span> 🌱</div>
+    </a>
+
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="plants.html">Plants</a>
+      <a href="#">Indoor Plants</a>
+      <a href="#">Outdoor Plants</a>
+      <a href="#">Plant Care</a>
+    </nav>
+
+    <a href="#" class="cart">🛒 Cart</a>
+
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="heading">
+    <h1>Shop Plants</h1>
+    <p>Find the perfect plant for your home, office or garden.</p>
+  </div>
+
+  <div class="filters">
+    <button>All Plants</button>
+    <button>Indoor</button>
+    <button>Outdoor</button>
+    <button>Flowering</button>
+    <button>Low Maintenance</button>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1593482892290-f54927ae1bb6?auto=format&fit=crop&w=700&q=80">
+      <div class="info">
+        <h3>Snake Plant</h3>
+        <div class="rating">★★★★★ 4.8</div>
+        <div class="price">₹499</div>
+        <button class="buy">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1620803366004-119c5b1247c2?auto=format&fit=crop&w=700&q=80">
+      <div class="info">
+        <h3>Money Plant</h3>
+        <div class="rating">★★★★★ 4.7</div>
+        <div class="price">₹299</div>
+        <button class="buy">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=700&q=80">
+      <div class="info">
+        <h3>Peace Lily</h3>
+        <div class="rating">★★★★★ 4.9</div>
+        <div class="price">₹599</div>
+        <button class="buy">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=80">
+      <div class="info">
+        <h3>Aloe Vera</h3>
+        <div class="rating">★★★★★ 4.8</div>
+        <div class="price">₹349</div>
+        <button class="buy">Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <h3>BookMyPlants 🌱</h3>
+  <p>Bringing a little more green into everyday life.</p>
+</footer>
+
+</body>
+</html>
